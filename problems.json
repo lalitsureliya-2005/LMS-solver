@@ -279,6 +279,94 @@
     {
       "name": "Delete Repeated Occurrences of a Pattern",
       "href": "/problems/atlassian-delete-repeated-occurrences-of-pattern-comb-0597?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Maximum One-Trade Crystal Profit",
+      "href": "/problems/maximum-one-trade-crystal-profit?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Cheapest Route Within K Hops",
+      "href": "/problems/ds26-29-cheapest-route-within-k-hops?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Fast Power: x^n mod 1e9+7",
+      "href": "/problems/adobe-fast-power-x-n-comb-0537?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Drop the Dominated Entries",
+      "href": "/problems/dll26-11-drop-the-dominated-entries?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Validate Binary Search Tree",
+      "href": "/problems/intuit-validate-binary-search-tree-comb-0714?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Rebuild the Tree from Two Traversals",
+      "href": "/problems/ds26-21-rebuild-the-tree-from-two-traversals?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Lowest Common Ancestor (Binary Lifting)",
+      "href": "/problems/lca-binary-lifting?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Alert Radius in the Sensor Tree",
+      "href": "/problems/ds26-19-alert-radius-in-the-sensor-tree?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Best Contiguous Revenue Window",
+      "href": "/problems/p26-a02-best-revenue-window?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Count Inversions",
+      "href": "/problems/count-inversions?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "p26-a07-rooftop-rainwater-harvest",
+      "href": "/problems/p26-a07-rooftop-rainwater-harvest"
+    },
+    {
+      "name": "dll26-12-pairs-across-two-ledgers",
+      "href": "/problems/dll26-12-pairs-across-two-ledgers"
+    },
+    {
+      "name": "Watchtower Placement",
+      "href": "/problems/p26-i13-watchtower-placement?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Twisted Word Search in a Grid",
+      "href": "/problems/intuit-twisted-word-search-in-grid-comb-0705?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Lucky Serial Audit",
+      "href": "/problems/p26-e09-lucky-serial-audit?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Course Schedule Feasibility",
+      "href": "/problems/cse-code-018-course-schedule-feasibility?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Dijkstra's Shortest Path",
+      "href": "/problems/dijkstras-shortest-path?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Minimum Spanning Tree — Count",
+      "href": "/problems/mst-edge-count-kruskal?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Module Build Order",
+      "href": "/problems/p26-a05-module-build-order?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "M-Colouring Feasibility",
+      "href": "/problems/salesforce-m-coloring-feasibility-comb-0768?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Satisfiability of Inequalities",
+      "href": "/problems/google-inequality-satisfiability-by-directed-graph-comb-0464?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    },
+    {
+      "name": "Fibre Route Latency",
+      "href": "/problems/p26-e05-fibre-route-latency?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
     }
   ],
   "solveLinks": [
@@ -351,6 +439,28 @@
     "/problems/dsx26-16-bracket-score?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
     "/problems/p26-i05-maintenance-window-consolidation?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
     "/problems/salesforce-can-array-become-sorted-by-adjacent-swaps-comb-0777?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
-    "/problems/atlassian-delete-repeated-occurrences-of-pattern-comb-0597?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
+    "/problems/atlassian-delete-repeated-occurrences-of-pattern-comb-0597?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/maximum-one-trade-crystal-profit?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/ds26-29-cheapest-route-within-k-hops?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/adobe-fast-power-x-n-comb-0537?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/dll26-11-drop-the-dominated-entries?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/intuit-validate-binary-search-tree-comb-0714?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/ds26-21-rebuild-the-tree-from-two-traversals?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/lca-binary-lifting?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/ds26-19-alert-radius-in-the-sensor-tree?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/p26-a02-best-revenue-window?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/count-inversions?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/p26-a07-rooftop-rainwater-harvest",
+    "/problems/dll26-12-pairs-across-two-ledgers",
+    "/problems/p26-i13-watchtower-placement?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/intuit-twisted-word-search-in-grid-comb-0705?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/p26-e09-lucky-serial-audit?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/cse-code-018-course-schedule-feasibility?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/dijkstras-shortest-path?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/mst-edge-count-kruskal?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/p26-a05-module-build-order?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/salesforce-m-coloring-feasibility-comb-0768?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/google-inequality-satisfiability-by-directed-graph-comb-0464?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+    "/problems/p26-e05-fibre-route-latency?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive"
   ]
 }

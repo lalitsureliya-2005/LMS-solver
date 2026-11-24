@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "generatedAt": "2026-10-24T16:13:56.541Z",
-    "totalProblems": 70,
-    "acceptedCount": 70,
+    "generatedAt": "2026-11-22T09:57:20.313Z",
+    "totalProblems": 90,
+    "acceptedCount": 90,
     "successRate": "100.0%"
   },
   "solutions": [
@@ -775,6 +775,226 @@
       "code": "import sys\n\ndef compute_pi(p):\n    m = len(p)\n    pi = [0] * m\n    for i in range(1, m):\n        j = pi[i - 1]\n        while j > 0 and p[i] != p[j]:\n            j = pi[j - 1]\n        if p[i] == p[j]:\n            j += 1\n        pi[i] = j\n    return pi\n\ndef main():\n    data = sys.stdin.read().split()\n    if len(data) < 2:\n        return\n    a, b = data[0], data[1]\n    m = len(b)\n    pi = compute_pi(b)\n    stack = []  # each element: (char, matched_len)\n    for ch in a:\n        prev = stack[-1][1] if stack else 0\n        while prev > 0 and ch != b[prev]:\n            prev = pi[prev - 1]\n        if ch == b[prev]:\n            prev += 1\n        else:\n            prev = 0\n        stack.append((ch, prev))\n        if prev == m:\n            for _ in range(m):\n                stack.pop()\n    result = ''.join(ch for ch, _ in stack)\n    print(result if result else \"EMPTY\")\n\nif __name__ == \"__main__\":\n    main()",
       "solutionFile": "solutions/69-solution.py",
       "timestamp": "2026-10-24T16:00:13.330Z"
+    },
+    {
+      "id": 71,
+      "index": 70,
+      "name": "Maximum One-Trade Crystal Profit",
+      "href": "/problems/maximum-one-trade-crystal-profit?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys\n\ndef max_profit(values):\n    if not values:\n        return 0\n    min_price = values[0]\n    max_prof = 0\n    for price in values[1:]:\n        profit = price - min_price\n        if profit > max_prof:\n            max_prof = profit\n        if price < min_price:\n            min_price = price\n    return max_prof\n\ndef main():\n    data = list(map(int, sys.stdin.read().split()))\n    if not data:\n        return\n    n = data[0]\n    values = data[1:1 + n]\n    print(max_profit(values))\n\nif __name__ == \"__main__\":\n    main()",
+      "solutionFile": "solutions/70-solution.py",
+      "timestamp": "2026-11-14T05:14:49.427Z"
+    },
+    {
+      "id": 72,
+      "index": 71,
+      "name": "Cheapest Route Within K Hops",
+      "href": "/problems/ds26-29-cheapest-route-within-k-hops?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys\n\ndef solve():\n    data = list(map(int, sys.stdin.buffer.read().split()))\n    if not data:\n        return\n    n, m, src, dst, k = data[:5]\n    edges = []\n    idx = 5\n    for _ in range(m):\n        u, v, w = data[idx], data[idx+1], data[idx+2]\n        edges.append((u, v, w))\n        idx += 3\n\n    L = k + 1  # maximum number of legs allowed\n    INF = 10**18\n    prev = [INF] * n\n    prev[src] = 0\n\n    best_cost = INF\n    best_legs = -1\n\n    for legs in range(1, L + 1):\n        cur = [INF] * n\n        for u, v, w in edges:\n            pu = prev[u]\n            if pu != INF:\n                nd = pu + w\n                if nd < cur[v]:\n                    cur[v] = nd\n        # check destination\n        cost = cur[dst]\n        if cost < best_cost:\n            best_cost = cost\n            best_legs = legs\n        # if equal cost, keep earlier (smaller legs) which is already stored\n        prev = cur\n\n    if best_cost == INF:\n        print(\"-1 -1\")\n    else:\n        print(f\"{best_cost} {best_legs}\")\n\nif __name__ == \"__main__\":\n    solve()",
+      "solutionFile": "solutions/71-solution.py",
+      "timestamp": "2026-11-14T05:15:11.317Z"
+    },
+    {
+      "id": 73,
+      "index": 72,
+      "name": "Fast Power: x^n mod 1e9+7",
+      "href": "/problems/adobe-fast-power-x-n-comb-0537?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys\n\nMOD = 1000000007\n\ndef mod_pow(x, n):\n    if n == 0:\n        return 1\n    x %= MOD\n    result = 1\n    while n:\n        if n & 1:\n            result = (result * x) % MOD\n        x = (x * x) % MOD\n        n >>= 1\n    return result\n\ndef main():\n    data = sys.stdin.buffer.read().split()\n    if not data:\n        return\n    q = int(data[0])\n    out = []\n    idx = 1\n    for _ in range(q):\n        x = int(data[idx]); n = int(data[idx + 1]); idx += 2\n        out.append(str(mod_pow(x, n)))\n    sys.stdout.write(\"\\n\".join(out))\n\nif __name__ == \"__main__\":\n    main()",
+      "solutionFile": "solutions/72-solution.py",
+      "timestamp": "2026-11-14T05:15:32.214Z"
+    },
+    {
+      "id": 74,
+      "index": 73,
+      "name": "Drop the Dominated Entries",
+      "href": "/problems/dll26-11-drop-the-dominated-entries?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys\n\ndef main():\n    data = sys.stdin.buffer.read().split()\n    if not data:\n        return\n    n = int(data[0]); head = int(data[1]); tail = int(data[2])\n    value = [0] * n\n    prv = [0] * n\n    nxt = [0] * n\n    p = 3\n    for i in range(n):\n        value[i] = int(data[p]); prv[i] = int(data[p + 1]); nxt[i] = int(data[p + 2]); p += 3\n\n    cur = tail\n    max_val = value[tail]\n    kept = 1\n    cur = prv[tail]\n    while cur != -1:\n        prev_cur = prv[cur]\n        if value[cur] < max_val:\n            a = prev_cur\n            b = nxt[cur]\n            if a != -1:\n                nxt[a] = b\n            else:\n                head = b\n            if b != -1:\n                prv[b] = a\n        else:\n            max_val = value[cur]\n            kept += 1\n        cur = prev_cur\n\n    forward_slots = []\n    forward_vals = []\n    node = head\n    while node != -1:\n        forward_slots.append(str(node))\n        forward_vals.append(str(value[node]))\n        node = nxt[node]\n\n    reverse_slots = []\n    node = tail\n    while node != -1:\n        reverse_slots.append(str(node))\n        node = prv[node]\n\n    out = []\n    out.append(str(kept))\n    out.append(' '.join(forward_slots))\n    out.append(' '.join(reverse_slots))\n    out.append(' '.join(forward_vals))\n    sys.stdout.write('\\n'.join(out))\n\nif __name__ == \"__main__\":\n    main()",
+      "solutionFile": "solutions/73-solution.py",
+      "timestamp": "2026-11-14T05:16:00.416Z"
+    },
+    {
+      "id": 75,
+      "index": 74,
+      "name": "Validate Binary Search Tree",
+      "href": "/problems/intuit-validate-binary-search-tree-comb-0714?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys\n\nclass Node:\n    __slots__ = ('val',)\n    def __init__(self, val):\n        self.val = val\n\ndef solve():\n    data = sys.stdin.read().strip()\n    if not data:\n        print(\"true\")\n        return\n    data = data.strip()\n    if data[0] == '[' and data[-1] == ']':\n        data = data[1:-1]\n    data = data.strip()\n    if not data:\n        print(\"true\")\n        return\n    tokens = [tok.strip() for tok in data.split(',')]\n    nodes = []\n    for tok in tokens:\n        if tok.lower() in ('null', 'none', ''):\n            nodes.append(None)\n        else:\n            try:\n                val = int(tok)\n            except:\n                # fallback for possible stray characters\n                val = int(tok)\n            nodes.append(Node(val))\n    n = len(nodes)\n    if n == 0:\n        print(\"true\")\n        return\n    stack = [(0, float('-inf'), float('inf'))]\n    while stack:\n        idx, low, high = stack.pop()\n        if idx >= n:\n            continue\n        cur = nodes[idx]\n        if cur is None:\n            continue\n        v = cur.val\n        if not (low < v < high):\n            print(\"false\")\n            return\n        # right child\n        r = 2 * idx + 2\n        if r < n:\n            stack.append((r, v, high))\n        # left child\n        l = 2 * idx + 1\n        if l < n:\n            stack.append((l, low, v))\n    print(\"true\")\n\nif __name__ == \"__main__\":\n    solve()",
+      "solutionFile": "solutions/74-solution.py",
+      "timestamp": "2026-11-14T05:16:21.821Z"
+    },
+    {
+      "id": 76,
+      "index": 75,
+      "name": "Rebuild the Tree from Two Traversals",
+      "href": "/problems/ds26-21-rebuild-the-tree-from-two-traversals?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    if not data:\n        return\n    n = int(data[0])\n    pre = list(map(int, data[1:1 + n]))\n    ino = list(map(int, data[1 + n:1 + 2 * n]))\n    pos = {val: i for i, val in enumerate(ino)}\n    sys.setrecursionlimit(30000)\n    res = []\n\n    def dfs(pre_start, in_start, size):\n        if size <= 0:\n            return\n        root = pre[pre_start]\n        idx = pos[root]\n        left_size = idx - in_start\n        right_size = size - left_size - 1\n        dfs(pre_start + 1, in_start, left_size)\n        dfs(pre_start + 1 + left_size, idx + 1, right_size)\n        res.append(root)\n\n    dfs(0, 0, n)\n    sys.stdout.write(' '.join(map(str, res)))\n\nif __name__ == \"__main__\":\n    solve()",
+      "solutionFile": "solutions/75-solution.py",
+      "timestamp": "2026-11-14T05:16:41.186Z"
+    },
+    {
+      "id": 77,
+      "index": 76,
+      "name": "Lowest Common Ancestor (Binary Lifting)",
+      "href": "/problems/lca-binary-lifting?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys, collections\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    it = iter(data)\n    n = int(next(it))\n    q = int(next(it))\n    adj = [[] for _ in range(n)]\n    for _ in range(n - 1):\n        u = int(next(it))\n        v = int(next(it))\n        adj[u].append(v)\n        adj[v].append(u)\n\n    LOG = (n).bit_length()\n    up = [[0] * n for _ in range(LOG)]\n    depth = [0] * n\n    parent = [-1] * n\n\n    dq = collections.deque([0])\n    parent[0] = 0\n    while dq:\n        node = dq.popleft()\n        for nb in adj[node]:\n            if nb == parent[node]:\n                continue\n            parent[nb] = node\n            depth[nb] = depth[node] + 1\n            dq.append(nb)\n\n    for v in range(n):\n        up[0][v] = parent[v]\n\n    for k in range(1, LOG):\n        prev = up[k - 1]\n        cur = up[k]\n        for v in range(n):\n            cur[v] = prev[prev[v]]\n\n    def lca(u, v):\n        if depth[u] < depth[v]:\n            u, v = v, u\n        diff = depth[u] - depth[v]\n        bit = 0\n        while diff:\n            if diff & 1:\n                u = up[bit][u]\n            diff >>= 1\n            bit += 1\n        if u == v:\n            return u\n        for k in range(LOG - 1, -1, -1):\n            if up[k][u] != up[k][v]:\n                u = up[k][u]\n                v = up[k][v]\n        return up[0][u]\n\n    out = []\n    for _ in range(q):\n        u = int(next(it))\n        v = int(next(it))\n        out.append(str(lca(u, v)))\n    sys.stdout.write(\"\\n\".join(out))\n\nif __name__ == \"__main__\":\n    solve()",
+      "solutionFile": "solutions/76-solution.py",
+      "timestamp": "2026-11-14T05:17:01.542Z"
+    },
+    {
+      "id": 78,
+      "index": 77,
+      "name": "Alert Radius in the Sensor Tree",
+      "href": "/problems/ds26-19-alert-radius-in-the-sensor-tree?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys\nfrom collections import deque\n\ndef main():\n    data = list(map(int, sys.stdin.buffer.read().split()))\n    if not data:\n        return\n    target_value, k = data[0], data[1]\n    n, root = data[2], data[3]\n    value = [0] * n\n    left = [ -1 ] * n\n    right = [ -1 ] * n\n    p = 4\n    for i in range(n):\n        value[i] = data[p]\n        left[i] = data[p + 1]\n        right[i] = data[p + 2]\n        p += 3\n    parent = [-1] * n\n    for i in range(n):\n        if left[i] != -1:\n            parent[left[i]] = i\n        if right[i] != -1:\n            parent[right[i]] = i\n    # find target index\n    target_idx = -1\n    for i, v in enumerate(value):\n        if v == target_value:\n            target_idx = i\n            break\n    if target_idx == -1:\n        print(\"NONE\")\n        return\n    visited = [False] * n\n    q = deque()\n    q.append(target_idx)\n    visited[target_idx] = True\n    for _ in range(k):\n        level_size = len(q)\n        if level_size == 0:\n            break\n        for _ in range(level_size):\n            node = q.popleft()\n            for nb in (left[node], right[node], parent[node]):\n                if nb != -1 and not visited[nb]:\n                    visited[nb] = True\n                    q.append(nb)\n    if not q:\n        print(\"NONE\")\n    else:\n        result = sorted(value[node] for node in q)\n        print(' '.join(map(str, result)))\n\nif __name__ == \"__main__\":\n    main()",
+      "solutionFile": "solutions/77-solution.py",
+      "timestamp": "2026-11-14T05:17:21.906Z"
+    },
+    {
+      "id": 79,
+      "index": 78,
+      "name": "Best Contiguous Revenue Window",
+      "href": "/problems/p26-a02-best-revenue-window?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys\n\ndef main():\n    data = list(map(int, sys.stdin.buffer.read().split()))\n    if not data:\n        return\n    n = data[0]\n    arr = data[1:1 + n]\n    cur = best = arr[0]\n    for v in arr[1:]:\n        cur = v if cur + v < v else cur + v\n        if cur > best:\n            best = cur\n    sys.stdout.write(str(best))\n\nif __name__ == \"__main__\":\n    main()",
+      "solutionFile": "solutions/78-solution.py",
+      "timestamp": "2026-11-14T05:17:45.298Z"
+    },
+    {
+      "id": 80,
+      "index": 79,
+      "name": "Count Inversions",
+      "href": "/problems/count-inversions?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    if not data:\n        return\n    n = int(data[0])\n    a = list(map(int, data[1:1 + n]))\n\n    def sort_count(arr):\n        if len(arr) <= 1:\n            return arr, 0\n        mid = len(arr) // 2\n        left, inv_left = sort_count(arr[:mid])\n        right, inv_right = sort_count(arr[mid:])\n        merged = []\n        i = j = 0\n        inv = inv_left + inv_right\n        len_left = len(left)\n        while i < len_left and j < len(right):\n            if left[i] <= right[j]:\n                merged.append(left[i])\n                i += 1\n            else:\n                merged.append(right[j])\n                j += 1\n                inv += len_left - i\n        merged.extend(left[i:])\n        merged.extend(right[j:])\n        return merged, inv\n\n    _, ans = sort_count(a)\n    sys.stdout.write(str(ans))\n\nif __name__ == \"__main__\":\n    solve()",
+      "solutionFile": "solutions/79-solution.py",
+      "timestamp": "2026-11-14T05:18:05.812Z"
+    },
+    {
+      "id": 83,
+      "index": 82,
+      "name": "Watchtower Placement",
+      "href": "/problems/p26-i13-watchtower-placement?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys\n\nsys.setrecursionlimit(10000)\n\ndef count_n_queens(n):\n    if n == 0:\n        return 1\n    limit = (1 << n) - 1\n    total = 0\n    def backtrack(cols, d1, d2):\n        nonlocal total\n        if cols == limit:\n            total += 1\n            return\n        # positions available in this row\n        avail = limit & ~(cols | d1 | d2)\n        while avail:\n            bit = avail & -avail\n            avail -= bit\n            backtrack(cols | bit, (d1 | bit) << 1, (d2 | bit) >> 1)\n    backtrack(0, 0, 0)\n    return total\n\ndef main():\n    data = sys.stdin.buffer.read().split()\n    if not data:\n        return\n    q = int(data[0])\n    ns = list(map(int, data[1:1+q]))\n    max_n = max(ns) if ns else 0\n    max_n = min(max_n, 12)\n    pre = [0] * (max_n + 1)\n    for n in range(max_n + 1):\n        pre[n] = count_n_queens(n)\n    out_lines = []\n    for n in ns:\n        if n <= max_n:\n            out_lines.append(str(pre[n]))\n        else:\n            out_lines.append(str(count_n_queens(n)))\n    sys.stdout.write(\"\\n\".join(out_lines))\n\nif __name__ == \"__main__\":\n    main()",
+      "solutionFile": "solutions/82-solution.py",
+      "timestamp": "2026-11-22T09:54:35.806Z"
+    },
+    {
+      "id": 84,
+      "index": 83,
+      "name": "Twisted Word Search in a Grid",
+      "href": "/problems/intuit-twisted-word-search-in-grid-comb-0705?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    if not data:\n        return\n    R, C = map(int, data[:2])\n    grid = data[2:2 + R]\n    word = data[2 + R]\n    L = len(word)\n    dirs = [(1,0),(-1,0),(0,1),(0,-1)]\n    visited = [[False]*C for _ in range(R)]\n\n    sys.setrecursionlimit(10000)\n\n    def dfs(r, c, idx):\n        if idx == L:\n            return True\n        for dr, dc in dirs:\n            nr, nc = r + dr, c + dc\n            if 0 <= nr < R and 0 <= nc < C and not visited[nr][nc] and grid[nr][nc] == word[idx]:\n                visited[nr][nc] = True\n                if dfs(nr, nc, idx + 1):\n                    return True\n                visited[nr][nc] = False\n        return False\n\n    for i in range(R):\n        for j in range(C):\n            if grid[i][j] == word[0]:\n                visited[i][j] = True\n                if dfs(i, j, 1):\n                    print(\"YES\")\n                    return\n                visited[i][j] = False\n    print(\"NO\")\n\nif __name__ == \"__main__\":\n    solve()",
+      "solutionFile": "solutions/83-solution.py",
+      "timestamp": "2026-11-22T09:54:55.835Z"
+    },
+    {
+      "id": 85,
+      "index": 84,
+      "name": "Lucky Serial Audit",
+      "href": "/problems/p26-e09-lucky-serial-audit?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys\n\nMAX_LEN = 19  # 10^18 has at most 19 digits\nMAX_K = 100\n\n# precompute dp[k][len][rem] = number of ways to fill 'len' free positions\ndp = [None] * (MAX_K + 1)\nfor k in range(1, MAX_K + 1):\n    dp_k = [[0] * k for _ in range(MAX_LEN + 1)]\n    dp_k[0][0] = 1\n    for l in range(1, MAX_LEN + 1):\n        cur = dp_k[l]\n        prev = dp_k[l - 1]\n        for rem in range(k):\n            cnt = prev[rem]\n            if cnt:\n                for d in range(10):\n                    cur[(rem + d) % k] += cnt\n    dp[k] = dp_k\n\ndef count_upto(N: int, k: int) -> int:\n    if N <= 0:\n        return 0\n    digits = list(map(int, str(N)))\n    L = len(digits)\n    ans = 0\n    rem = 0\n    dp_k = dp[k]\n    for i, d in enumerate(digits):\n        remaining = L - i - 1\n        for nd in range(d):\n            new_rem = (rem + nd) % k\n            need = (-new_rem) % k\n            ans += dp_k[remaining][need]\n        rem = (rem + d) % k\n    if rem == 0:\n        ans += 1\n    # exclude the number 0\n    return ans - 1\n\ndef main():\n    data = sys.stdin.buffer.read().split()\n    if not data:\n        return\n    q = int(data[0])\n    out = []\n    idx = 1\n    for _ in range(q):\n        N = int(data[idx]); k = int(data[idx + 1]); idx += 2\n        out.append(str(count_upto(N, k)))\n    sys.stdout.write(\"\\n\".join(out))\n\nif __name__ == \"__main__\":\n    main()",
+      "solutionFile": "solutions/84-solution.py",
+      "timestamp": "2026-11-22T09:55:14.719Z"
+    },
+    {
+      "id": 86,
+      "index": 85,
+      "name": "Course Schedule Feasibility",
+      "href": "/problems/cse-code-018-course-schedule-feasibility?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import json, sys\nfrom collections import deque\n\ndef can_finish_courses(payload):\n    n = payload.get(\"n\", 0)\n    prereqs = payload.get(\"prerequisites\", [])\n    indeg = [0] * n\n    adj = [[] for _ in range(n)]\n    for a, b in prereqs:\n        # edge b -> a\n        if 0 <= a < n and 0 <= b < n:\n            adj[b].append(a)\n            indeg[a] += 1\n    q = deque([i for i in range(n) if indeg[i] == 0])\n    seen = 0\n    while q:\n        u = q.popleft()\n        seen += 1\n        for v in adj[u]:\n            indeg[v] -= 1\n            if indeg[v] == 0:\n                q.append(v)\n    return seen == n\n\nif __name__ == \"__main__\":\n    payload = json.loads(sys.stdin.read() or \"{}\")\n    print(json.dumps(can_finish_courses(payload), separators=(\",\", \":\")))",
+      "solutionFile": "solutions/85-solution.py",
+      "timestamp": "2026-11-22T09:55:32.584Z"
+    },
+    {
+      "id": 87,
+      "index": 86,
+      "name": "Dijkstra's Shortest Path",
+      "href": "/problems/dijkstras-shortest-path?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys, heapq\n\ndef solve():\n    data = list(map(int, sys.stdin.buffer.read().split()))\n    if not data:\n        return\n    it = iter(data)\n    n = next(it)\n    m = next(it)\n    adj = [[] for _ in range(n)]\n    for _ in range(m):\n        u = next(it)\n        v = next(it)\n        w = next(it)\n        adj[u].append((v, w))\n    INF = 10**18\n    dist = [INF] * n\n    dist[0] = 0\n    heap = [(0, 0)]\n    while heap:\n        d, u = heapq.heappop(heap)\n        if d != dist[u]:\n            continue\n        for v, w in adj[u]:\n            nd = d + w\n            if nd < dist[v]:\n                dist[v] = nd\n                heapq.heappush(heap, (nd, v))\n    out = [str(d if d != INF else -1) for d in dist]\n    sys.stdout.write(' '.join(out))\n\nif __name__ == \"__main__\":\n    solve()",
+      "solutionFile": "solutions/86-solution.py",
+      "timestamp": "2026-11-22T09:55:49.887Z"
+    },
+    {
+      "id": 88,
+      "index": 87,
+      "name": "Minimum Spanning Tree — Count",
+      "href": "/problems/mst-edge-count-kruskal?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    if not data:\n        return\n    it = iter(data)\n    n = int(next(it))\n    m = int(next(it))\n    edges = []\n    for _ in range(m):\n        u = int(next(it)); v = int(next(it)); w = int(next(it))\n        edges.append((w, u, v))\n    edges.sort()\n    parent = list(range(n))\n    size = [1] * n\n\n    def find(x):\n        while parent[x] != x:\n            parent[x] = parent[parent[x]]\n            x = parent[x]\n        return x\n\n    def union(a, b):\n        ra = find(a)\n        rb = find(b)\n        if ra == rb:\n            return False\n        if size[ra] < size[rb]:\n            ra, rb = rb, ra\n        parent[rb] = ra\n        size[ra] += size[rb]\n        return True\n\n    total_weight = 0\n    edge_cnt = 0\n    for w, u, v in edges:\n        if union(u, v):\n            total_weight += w\n            edge_cnt += 1\n            if edge_cnt == n - 1:\n                break\n\n    if n == 1:\n        print(\"0 0\")\n    elif edge_cnt == n - 1:\n        print(f\"{total_weight} {edge_cnt}\")\n    else:\n        print(\"IMPOSSIBLE\")\n\nif __name__ == \"__main__\":\n    solve()",
+      "solutionFile": "solutions/87-solution.py",
+      "timestamp": "2026-11-22T09:56:08.101Z"
+    },
+    {
+      "id": 89,
+      "index": 88,
+      "name": "Module Build Order",
+      "href": "/problems/p26-a05-module-build-order?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys, heapq\n\ndef main():\n    data = sys.stdin.buffer.read().split()\n    if not data:\n        return\n    it = iter(data)\n    n = int(next(it))\n    m = int(next(it))\n    adj = [[] for _ in range(n + 1)]\n    indeg = [0] * (n + 1)\n    for _ in range(m):\n        a = int(next(it)); b = int(next(it))\n        adj[a].append(b)\n        indeg[b] += 1\n    heap = [i for i in range(1, n + 1) if indeg[i] == 0]\n    heapq.heapify(heap)\n    order = []\n    while heap:\n        u = heapq.heappop(heap)\n        order.append(u)\n        for v in adj[u]:\n            indeg[v] -= 1\n            if indeg[v] == 0:\n                heapq.heappush(heap, v)\n    out = sys.stdout\n    if len(order) == n:\n        out.write(' '.join(map(str, order)))\n    else:\n        out.write('CYCLE')\n\nif __name__ == \"__main__\":\n    main()",
+      "solutionFile": "solutions/88-solution.py",
+      "timestamp": "2026-11-22T09:56:26.248Z"
+    },
+    {
+      "id": 90,
+      "index": 89,
+      "name": "M-Colouring Feasibility",
+      "href": "/problems/salesforce-m-coloring-feasibility-comb-0768?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys\n\ndef solve():\n    data = sys.stdin.read().split()\n    if not data:\n        return\n    it = iter(data)\n    V = int(next(it))\n    E = int(next(it))\n    adj_mask = [0] * V\n    self_loop = False\n    for _ in range(E):\n        u = int(next(it))\n        v = int(next(it))\n        if u == v:\n            self_loop = True\n        else:\n            adj_mask[u] |= 1 << v\n            adj_mask[v] |= 1 << u\n    M = int(next(it))\n    if self_loop:\n        print(\"NO\")\n        return\n    if M >= V:\n        print(\"YES\")\n        return\n\n    N = 1 << V\n    independent = [False] * N\n    independent[0] = True\n    for mask in range(1, N):\n        # get least significant set bit\n        lsb = mask & -mask\n        v = (lsb.bit_length() - 1)\n        rest = mask ^ lsb\n        independent[mask] = independent[rest] and ((adj_mask[v] & rest) == 0)\n\n    INF = V + 1\n    dp = [INF] * N\n    dp[0] = 0\n    for mask in range(1, N):\n        sub = mask\n        while sub:\n            if independent[sub]:\n                remaining = mask ^ sub\n                if dp[remaining] + 1 < dp[mask]:\n                    dp[mask] = dp[remaining] + 1\n                    if dp[mask] == 1:  # cannot get better\n                        break\n            sub = (sub - 1) & mask\n\n    print(\"YES\" if dp[N - 1] <= M else \"NO\")\n\nif __name__ == \"__main__\":\n    solve()",
+      "solutionFile": "solutions/89-solution.py",
+      "timestamp": "2026-11-22T09:56:43.549Z"
+    },
+    {
+      "id": 91,
+      "index": 90,
+      "name": "Satisfiability of Inequalities",
+      "href": "/problems/google-inequality-satisfiability-by-directed-graph-comb-0464?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys\nfrom collections import deque\n\ndef solve():\n    data = sys.stdin.read().split()\n    if not data:\n        return\n    n = int(data[0]); m = int(data[1])\n    rel = []\n    idx = 2\n    for _ in range(m):\n        u = int(data[idx]) - 1\n        op = data[idx + 1]\n        v = int(data[idx + 2]) - 1\n        rel.append((u, op, v))\n        idx += 3\n\n    parent = list(range(n))\n    rank = [0] * n\n\n    def find(x):\n        while parent[x] != x:\n            parent[x] = parent[parent[x]]\n            x = parent[x]\n        return x\n\n    def union(a, b):\n        ra, rb = find(a), find(b)\n        if ra == rb:\n            return\n        if rank[ra] < rank[rb]:\n            parent[ra] = rb\n        elif rank[ra] > rank[rb]:\n            parent[rb] = ra\n        else:\n            parent[rb] = ra\n            rank[ra] += 1\n\n    # unite equalities\n    for u, op, v in rel:\n        if op == '=':\n            union(u, v)\n\n    # map roots to ids\n    root_to_id = {}\n    comp_id = 0\n    for i in range(n):\n        r = find(i)\n        if r not in root_to_id:\n            root_to_id[r] = comp_id\n            comp_id += 1\n\n    k = comp_id\n    adj = [[] for _ in range(k)]\n    indeg = [0] * k\n\n    # process strict relations\n    for u, op, v in rel:\n        if op == '=':\n            continue\n        ru = find(u)\n        rv = find(v)\n        if ru == rv:\n            print(\"IMPOSSIBLE\")\n            return\n        if op == '<':\n            a, b = ru, rv\n        else:  # '>'\n            a, b = rv, ru\n        ida = root_to_id[a]\n        idb = root_to_id[b]\n        adj[ida].append(idb)\n        indeg[idb] += 1\n\n    # topological sort\n    q = deque([i for i in range(k) if indeg[i] == 0])\n    visited = 0\n    while q:\n        node = q.popleft()\n        visited += 1\n        for nb in adj[node]:\n            indeg[nb] -= 1\n            if indeg[nb] == 0:\n                q.append(nb)\n\n    if visited == k:\n        print(\"POSSIBLE\")\n    else:\n        print(\"IMPOSSIBLE\")\n\nif __name__ == \"__main__\":\n    solve()",
+      "solutionFile": "solutions/90-solution.py",
+      "timestamp": "2026-11-22T09:57:01.948Z"
+    },
+    {
+      "id": 92,
+      "index": 91,
+      "name": "Fibre Route Latency",
+      "href": "/problems/p26-e05-fibre-route-latency?courseId=cmukqulxo07b92iuftcmscwzy&returnTo=%2Fcourses%2Fcompetitive-coding%2Fcompetitive",
+      "verdict": "Accepted",
+      "language": "python",
+      "code": "import sys, heapq\n\ndef main():\n    data = sys.stdin.buffer.read().split()\n    if not data:\n        return\n    it = iter(data)\n    n = int(next(it))\n    m = int(next(it))\n    adj = [[] for _ in range(n + 1)]\n    for _ in range(m):\n        u = int(next(it)); v = int(next(it)); w = int(next(it))\n        adj[u].append((v, w))\n        adj[v].append((u, w))\n    INF = 10**19\n    dist = [INF] * (n + 1)\n    dist[1] = 0\n    heap = [(0, 1)]\n    while heap:\n        d, u = heapq.heappop(heap)\n        if d != dist[u]:\n            continue\n        for v, w in adj[u]:\n            nd = d + w\n            if nd < dist[v]:\n                dist[v] = nd\n                heapq.heappush(heap, (nd, v))\n    out = []\n    for i in range(1, n + 1):\n        out.append(str(dist[i] if dist[i] != INF else -1))\n    sys.stdout.write(' '.join(out))\n\nif __name__ == \"__main__\":\n    main()",
+      "solutionFile": "solutions/91-solution.py",
+      "timestamp": "2026-11-22T09:57:20.313Z"
     }
   ]
 }

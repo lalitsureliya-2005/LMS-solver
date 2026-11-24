@@ -14,6 +14,8 @@
     "solve:new": "node solve.js --all --scrape",
     "solve:google": "node solve.js --all --google",
     "solve:google:session": "node solve.js --all --use-session",
+    "solve:week6": "node solve.js --all --from 83",
+    "solve:from": "node solve.js --all --from",
     "start": "node runner.js",
     "web": "node server.js",
     "web:dev": "node server.js",

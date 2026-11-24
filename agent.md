@@ -23,6 +23,8 @@ Automate the end-to-end solving of competitive coding problems on BMSCE LMS:
 | **New Problems Dropped** | `npm run solve:new` | Re-scrapes the course, then solves everything not yet `Accepted` |
 | **Solve All Problems** | `npm run solve:all` | Solves all problems in `problems.json`; automatically skips already `Accepted` problems |
 | **Force Re-solve All** | `node solve.js --all --force` | Re-solves all problems even if previously accepted |
+| **Solve From Problem N** | `node solve.js --all --from N` | Solves problems starting from #N (1-based), skipping earlier ones |
+| **Solve Week 5 Only** | `npm run solve:week5` | Re-scrapes the course, then solves only Week 5 (problem #71 onwards) |
 | **Solve Specific Problem** | `node solve.js <number>` | Solves problem by 1-based index (e.g., `node solve.js 2`) |
 | **Debug Mode (Visible Browser)** | `npm run solve:debug` | Runs with `HEADLESS=false` so you can visually watch the browser |
 | **Refresh Problem List** | `npm run scrape` | Re-scrapes the course problem list into `problems.json` and re-indexes cached solutions |

@@ -795,7 +795,19 @@ async function main() {
   if (args.includes("--all")) {
     const force = args.includes("--force");
 
-    log(`📋 Starting automated run for all ${problems.length} problems...`);
+    // --from N: start from problem N (1-based), solving only N..end
+    const fromArg = args.find((a) => a.startsWith("--from=") || a.startsWith("--from "));
+    let fromIdx = 0;
+    const fromArgIdx = args.indexOf("--from");
+    if (fromArgIdx >= 0 && args[fromArgIdx + 1] && /^\d+$/.test(args[fromArgIdx + 1])) {
+      fromIdx = Math.max(0, parseInt(args[fromArgIdx + 1]) - 1);
+    }
+    const fromEq = args.find((a) => a.startsWith("--from="));
+    if (fromEq) {
+      fromIdx = Math.max(0, parseInt(fromEq.split("=")[1]) - 1);
+    }
+
+    log(`📋 Starting automated run for ${problems.length - fromIdx} problems (${fromIdx > 0 ? `from #${fromIdx + 1}` : "all"})...`);
 
     let passed = 0;
     let failed = 0;
@@ -804,7 +816,7 @@ async function main() {
 
     const existingResults = loadResults();
 
-    for (let i = 0; i < problems.length; i++) {
+    for (let i = fromIdx; i < problems.length; i++) {
       if (isAccepted(existingResults, problems[i].href, account) && !force) {
         log(`⏩ Skipping [${i + 1}/${problems.length}] "${problems[i].name}" - Already Accepted!`);
         skipped++;
@@ -842,7 +854,8 @@ async function main() {
   }
 
   // If a specific number or index is passed (1-based index)
-  const numArg = args.find((a) => /^\d+$/.test(a));
+  // Skip numbers that are values of --from
+  const numArg = args.find((a, idx) => /^\d+$/.test(a) && args[idx - 1] !== "--from");
   if (numArg) {
     const targetIdx = parseInt(numArg);
     const idx = targetIdx > 0 ? targetIdx - 1 : 0;
